@@ -31,12 +31,10 @@ void Employee :: show(){
 
 class Manager:public Employee{
 	protected: 
-		int sub;
+		int subordinate;
 	public:
 		Manager();
-		Manager(string name, int id , float salary):Employee(name,id,salary){
-			
-		}
+		Manager(string, int , float, int);
 		
 		void show();
 };
@@ -46,14 +44,13 @@ Manager:: Manager(){
 	id = 123;
 	salary = 5000;
 }
-//Manager::Manager(string name, int id, float salary){
-
-//}
+Manager::Manager(string name, int id, float salary,int sub){
+	Employee(name,id,salary);
+	subordinate = sub;
+}
 
 void Manager::show (){
-	cout<<"Employee: "<<name<<endl;
-	cout<<"ID number: "<<id<<endl;
-	cout<<"Salary: "<<salary<<endl<<endl; 
+	Employee::show(); 
 }
 
 
@@ -65,7 +62,7 @@ class Laborer{
 
 int main(){
 	Employee emp1, emp2("victor hugo", 555, 2500.55);
-	Manager m1, m2("james brown", 232, 5750.25);
+	Manager m1, m2("james brown", 232, 5750.25,2);
 	emp1.show();
 	emp2.show();
 	m2.show();
